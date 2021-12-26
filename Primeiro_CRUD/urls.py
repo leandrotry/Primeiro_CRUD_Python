@@ -19,5 +19,5 @@ from CRUD import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/<nome>', views.hello)
+    path('create/<int:v1>/<int:v2>', views.create)
 ]
