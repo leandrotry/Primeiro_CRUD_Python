@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <form name="formulario" id="form" method="POST", action="/create/">
+        {% csrf_token %}
+        <div class="form">
+
+            <label>Nome:</label>
+            {{form.nome}}
+
+        </div>
+        <div class="form">
+
+            <label>Ultimo Nome:</label>
+            {{form.ultimo_nome}}
+
+        </div>
+        <div class="form">
+
+            <label>Data Nascimento:</label>
+            {{form.data_nascimento}}
+
+        </div>
+        <div class="form">
+
+            <label>Profissão :</label>
+            {{form.profissao}}
+
+        </div>
+
+        <input type="submit" value="salvar" class="btn_enviar">
+
+    </form>
+</body>
+</html>

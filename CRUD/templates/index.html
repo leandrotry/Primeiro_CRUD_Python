@@ -1,0 +1,35 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Página inicial</title>
+</head>
+<body>
+ <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Sobrenome</th>
+        <th>Data_nascimento</th>
+        <th>Profissão</th>
+      </tr>
+    </thead>
+    <tbody>
+    {%for dbs in db %}
+        {% empty idade = dbs.data_nascimento - datetime.today()%}
+      <tr>
+        <td>{{dbs.id}}</td>
+        <td>{{dbs.nome}}</td>
+        <td>{{dbs.ultimo_nome}}</td>
+        <td>{{idade}}</td>
+        <td>{{dbs.profissao}}</td>
+      </tr>
+     {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
+
+{% endblock %}

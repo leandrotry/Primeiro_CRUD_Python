@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 # Create your models here.
@@ -6,7 +8,7 @@ class Pessoa(models.Model):
     ultimo_nome = models.CharField(max_length = 200)
     data_nascimento = models.DateField()
     profissao = models.CharField(max_length = 200)
-    criado = models.DateTimeField
+    criado = models.DateTimeField(auto_now=True)
 
     @property
     def nome_completo(self):
