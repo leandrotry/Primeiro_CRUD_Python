@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 
 from django.db import models
 
@@ -10,6 +10,7 @@ class Pessoa(models.Model):
     profissao = models.CharField(max_length = 200)
     criado = models.DateTimeField(auto_now=True)
 
+
     @property
     def nome_completo(self):
         """
@@ -17,4 +18,10 @@ class Pessoa(models.Model):
 
         """
 
-        return f'{self.nome }{self.ultimo_nome}'
+        return f'{self.nome.title()} {self.ultimo_nome.title()}'
+
+    @property
+    def idade(self):
+        idade = date.today() - self.data_nascimento
+        idade /= 365.25
+        return ((idade).days)

@@ -5,7 +5,7 @@
     <title>Index</title>
 </head>
 <body>
-    <form name="formulario" id="form" method="POST", action="/create/">
+    <form name="formulario" id="form" method="POST", action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}">
         {% csrf_token %}
         <div class="form">
 
