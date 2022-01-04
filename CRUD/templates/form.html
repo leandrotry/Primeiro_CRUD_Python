@@ -5,6 +5,7 @@
     <title>Index</title>
 </head>
 <body>
+    <div class="resultado"></div>
     <form name="formulario" id="form" method="POST", action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}">
         {% csrf_token %}
         <div class="form">
@@ -36,5 +37,7 @@
 
     </form>
 <a href="/" class="btn">Voltar</a>
+{% load static %}
+<script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>

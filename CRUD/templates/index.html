@@ -28,13 +28,16 @@
         <td>
             <a href="view/{{dbs.id}}/" class="btn_visualizar">Detalhar</a>
             <a href="edit/{{dbs.id}}/" class="btn_editar">Editar</a>
-            <a href="" class="btn_Deletar">Deletar</a>
+            <a href="delete/{{dbs.id}}" class="btn_deletar">Deletar</a>
         </td>
       </tr>
      {% endfor %}
     </tbody><br>
 </table>
 <a href="form/" class="btn">Adicionar</a>
+
+{% load static %}
+<script src="{% static 'javascript.js' %}"></script>
 </body>
 </html>
 
