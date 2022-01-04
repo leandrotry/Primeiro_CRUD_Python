@@ -5,8 +5,8 @@
     <title>Index</title>
 </head>
 <body>
-    <div class="resultado"></div>
-    <form name="formulario" id="form" method="POST", action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}">
+    <div id="result"></div>
+    <form name="formulario" id="form" method="POST" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}">
         {% csrf_token %}
         <div class="form">
 
