@@ -4,67 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <title>Visualização</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <div class="buscar">
-        <form method="get">
-            <input type="text" id="search" name="search" class="search" placeholder="Buscar...">
-            <label for="opcao">Selcione por qual categoria deseja buscar</label>
-            <select id="opcao" name="opcao" class="opcao">
-                <option value="nome">Nome</option>
-                <option value="ultimo_nome">Ultimo Nome</option>
-                <option value="idade">idade</option>
-                <option value="data_nascimento">Data de Nascimento</option>
-                <option value="profissao">Profissão</option>
-            </select>
-        </form>
-    </div>
- <table>
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nome</th>
-        <th>Sobrenome</th>
-        <th>Data_nascimento</th>
-        <th>Profissão</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-    {%for dbs in db %}
-      <tr>
-        <td>{{dbs.id}}</td>
-        <td>{{dbs.nome}}</td>
-        <td>{{dbs.ultimo_nome}}</td>
-        <td>{{dbs.data_nascimento}}</td>
-        <td>{{dbs.profissao}}</td>
-        <td>
-            <a href="view/{{dbs.id}}/" class="btn_visualizar">Detalhar</a>
-            <a href="edit/{{dbs.id}}/" class="btn_editar">Editar</a>
-            <a href="delete/{{dbs.id}}" class="btn_deletar">Deletar</a>
-        </td>
-      </tr>
-     {% endfor %}
-    </tbody><br>
-</table>
-<a href="form/" class="btn">Adicionar</a>
+  <div class="container">
+    <br><br>
+      <div class="row">
+          <div class="col s6">
+              <form method="get">
+                <input type="text" id="search" name="search" class="search" placeholder="Buscar...">
+                    <div class="opcao">
+                        <select id="opcao" name="opcao" class="browser-default">
+                        <option value="" disabled selected>Selcione por qual categoria deseja buscar</option>
+                        <option value="nome">Nome</option>
+                        <option value="ultimo_nome">Ultimo Nome</option>
+                        <option value="data_nascimento">Data de Nascimento</option>
+                        <option value="profissao">Profissão</option>
+                        </select>
+                    </div>
+              </form>
+          </div>
+      </div>
 
- <div class="pagination" style="text-align: center">
-     {% if db.has_previous %}
-        <a href="?page={{db.previous_page_number}}"> < </a>
-     {% endif %}
+  <div class="tabela">
+    <table class="center">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>Data_nascimento</th>
+            <th>Profissão</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+        {%for dbs in db %}
+          <tr>
+            <td>{{dbs.id}}</td>
+            <td>{{dbs.nome.title}}</td>
+            <td>{{dbs.ultimo_nome.title}}</td>
+            <td>{{dbs.data_nascimento}}</td>
+            <td>{{dbs.profissao.title}}</td>
+            <td>
+                <a href="view/{{dbs.id}}/" class="waves-effect waves-light btn-small">Detalhar</a>
+                <a href="edit/{{dbs.id}}/" class="waves-effect waves-light btn-small" style="background-color: rgb(63, 162, 219);">Editar</a>
+                <a href="delete/{{dbs.id}}" class="waves-effect waves-light btn-small" style="background-color: hsl(0, 85%, 49%);">Deletar</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody> <br>
 
-     {{db.number}}
+    </table>
 
-     {% if db.has_next %}
-        <a href="?page={{db.next_page_number}}"> > </a>
-     {% endif %}
+  </div>
+
+ <br>
+  <a href="form/" class="btn">Adicionar</a>
+  <a href="/" class="btn">Voltar</a>
+
+  <div class="pagination" style="text-align: center">
+      {% if db.has_previous %}
+          <a href="?page={{db.previous_page_number}}"> < </a>
+      {% endif %}
+
+      {{db.number}}
+
+      {% if db.has_next %}
+          <a href="?page={{db.next_page_number}}"> > </a>
+      {% endif %}
 
 
- </div>
+  </div>
 
-{% load static %}
-<script src="{% static 'javascript.js' %}"></script>
+  {% load static %}
+  <script src="{% static 'javascript.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</div>
 </body>
 </html>
 

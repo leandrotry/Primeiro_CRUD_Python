@@ -10,7 +10,7 @@ def home(request):
 
     def paginar():
         all = Pessoa.objects.all()
-        paginator = Paginator(all, 2)
+        paginator = Paginator(all, 5)
         pages = request.GET.get('page')
         data['db'] = paginator.get_page(pages)
 
@@ -19,8 +19,14 @@ def home(request):
         search = request.GET.get('search')
         opcao = request.GET.get('opcao')
         if search:
-            op = opcao
-            data['db'] = Pessoa.objects.filter(op=search)
+            if opcao == 'nome':
+                data['db'] = Pessoa.objects.filter(nome__icontains=search)
+            elif opcao == 'ultimo_nome':
+                data['db'] = Pessoa.objects.filter(ultimo_nome__icontains=search)
+            elif opcao == 'data_nascimento':
+                data['db'] = Pessoa.objects.filter(data_nascimento__icontains=search)
+            elif opcao == 'profissao':
+                data['db'] = Pessoa.objects.filter(profissao__icontains=search)
         else:
             return paginar()
     paginar()

@@ -3,41 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
 <body>
-    <div id="result"></div>
-    <form name="formulario" id="form" method="POST" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}">
-        {% csrf_token %}
-        <div class="form">
+    <br><br>
+    <div class="container">
+        <div id="result" class="row"></div>
+            <form name="formulario" id="form" method="POST" action="{% if db %}/update/{{db.id}}/{%else%}/create/{% endif %}" class="col s12">
+                {% csrf_token %}
+                <div class="form input-field col s6">
 
-            <label>Nome:</label>
-            {{form.nome}}
+                    <label>Nome:</label>
+                    {{form.nome}}
 
-        </div>
-        <div class="form">
+                </div>
+                <div class="form input-field col s6">
 
-            <label>Ultimo Nome:</label>
-            {{form.ultimo_nome}}
+                    <label>Ultimo Nome:</label>
+                    {{form.ultimo_nome}}
 
-        </div>
-        <div class="form">
+                </div>
+                <div class="form input-field col s6">
 
-            <label>Data Nascimento:</label>
-            {{form.data_nascimento}}
+                    <label>Data Nascimento:</label>
+                    {{form.data_nascimento}}
 
-        </div>
-        <div class="form">
+                </div>
+                <div class="form input-field col s6">
 
-            <label>Profissão :</label>
-            {{form.profissao}}
+                    <label>Profissão :</label>
+                    {{form.profissao}}
 
-        </div>
+                </div>
 
-        <input type="submit" value="salvar" class="btn_enviar">
+                <input type="submit" value="salvar" class="btn_enviar">
 
-    </form>
-<a href="/" class="btn">Voltar</a>
-{% load static %}
-<script src="{% static 'javascript.js' %}"></script>
+            </form>
+    <a href="/" class="btn">Voltar</a>
+    {% load static %}
+    <script src="{% static 'javascript.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</div>
 </body>
 </html>
