@@ -1,13 +1,30 @@
 from django.shortcuts import render, HttpResponse, render, redirect
 from CRUD.forms import PessoaForm
 from CRUD.models import Pessoa
-
+from django.core.paginator import Paginator
 
 # Create your views here.
 
 def home(request):
     data = {}
-    data['db'] = Pessoa.objects.all()
+
+    def paginar():
+        all = Pessoa.objects.all()
+        paginator = Paginator(all, 2)
+        pages = request.GET.get('page')
+        data['db'] = paginator.get_page(pages)
+
+
+    def buscar():
+        search = request.GET.get('search')
+        opcao = request.GET.get('opcao')
+        if search:
+            op = opcao
+            data['db'] = Pessoa.objects.filter(op=search)
+        else:
+            return paginar()
+    paginar()
+    buscar()
     return render(request, 'index.html', data)
 
 
@@ -49,3 +66,4 @@ def delete(request, pk):
     db = Pessoa.objects.get(pk = pk)
     db.delete()
     return redirect('home')
+

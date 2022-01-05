@@ -6,6 +6,19 @@
     <title>Visualização</title>
 </head>
 <body>
+    <div class="buscar">
+        <form method="get">
+            <input type="text" id="search" name="search" class="search" placeholder="Buscar...">
+            <label for="opcao">Selcione por qual categoria deseja buscar</label>
+            <select id="opcao" name="opcao" class="opcao">
+                <option value="nome">Nome</option>
+                <option value="ultimo_nome">Ultimo Nome</option>
+                <option value="idade">idade</option>
+                <option value="data_nascimento">Data de Nascimento</option>
+                <option value="profissao">Profissão</option>
+            </select>
+        </form>
+    </div>
  <table>
     <thead>
       <tr>
@@ -35,6 +48,20 @@
     </tbody><br>
 </table>
 <a href="form/" class="btn">Adicionar</a>
+
+ <div class="pagination" style="text-align: center">
+     {% if db.has_previous %}
+        <a href="?page={{db.previous_page_number}}"> < </a>
+     {% endif %}
+
+     {{db.number}}
+
+     {% if db.has_next %}
+        <a href="?page={{db.next_page_number}}"> > </a>
+     {% endif %}
+
+
+ </div>
 
 {% load static %}
 <script src="{% static 'javascript.js' %}"></script>

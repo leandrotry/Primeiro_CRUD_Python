@@ -1,4 +1,5 @@
 from datetime import date
+from django.core.paginator import Paginator
 
 from django.db import models
 
@@ -25,3 +26,4 @@ class Pessoa(models.Model):
         idade = date.today() - self.data_nascimento
         idade /= 365.25
         return ((idade).days)
+
